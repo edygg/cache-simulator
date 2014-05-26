@@ -33,17 +33,17 @@ public class CacheSimulator {
     public static void main(String[] args) {
         //fillRam();
         resetTime();
-        test(NO_CACHE);
-        System.out.printf("%.2f\n", time);
+        bubbleSort(NO_CACHE);
+        System.out.printf("Without cache: \t\t\t%.2f\n", time);
         resetTime();
-        test(DIRECT);
-        System.out.printf("%.2f\n", time);
+        bubbleSort(DIRECT);
+        System.out.printf("Direct cache: \t\t\t%.2f\n", time);
         resetTime();
-        test(ASSOCIATIVE);
-        System.out.printf("%.2f\n", time);
+        bubbleSort(ASSOCIATIVE);
+        System.out.printf("Associative cache: \t\t%.2f\n", time);
         resetTime();
-        test(SET_ASSOCIATIVE);
-        System.out.printf("%.2f\n", time);
+        bubbleSort(SET_ASSOCIATIVE);
+        System.out.printf("Set Associative cache: \t\t%.2f\n", time);
     }
 
     public static void fillRam() {
@@ -297,6 +297,18 @@ public class CacheSimulator {
             }
             if (read(type, i) > mayor) {
                 mayor = read(type, i);
+            }
+        }
+    }
+    
+    public static void bubbleSort(byte type) {
+        for (int i = 0; i < RAM_CAPACITY - 1; i++) {
+            for (int j = i+1; j < RAM_CAPACITY; j++) {
+                if (read(type, i) > read(type, j)) {
+                    int tmp = read(type, i);
+                    write(type, i, read(type, j));
+                    write(type, j, tmp);
+                }
             }
         }
     }
