@@ -31,7 +31,7 @@ public class CacheSimulator {
     public static double time;
 
     public static void main(String[] args) {
-        //fillRam();
+        fillRam();
         resetTime();
         bubbleSort(NO_CACHE);
         System.out.printf("Without cache: \t\t\t%.2f\n", time);
