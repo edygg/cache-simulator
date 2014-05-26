@@ -1,7 +1,7 @@
 cache-simulator
 ===============
 
-= Integrantes =
+= Integrantes
 Edilson Fernando Gonzalez
 Joel Alexander Pineda
 Samuel Eduardo Sánchez
